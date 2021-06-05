@@ -1,0 +1,91 @@
+/*Configuración*/
+
+1. Generar el package-json: npm init -y
+
+2. Agregar los scripts de ejecución en el package.json
+
+3. Crear el archivo: .eslintrc.json
+
+4. Crear el archivo para definir algunas reglas de formato de código: .prettierrc.json
+
+5. Instalar express para crear nuestro app web: npm i express
+
+6. Instalar dotenv para cargar variables de entorno del archivo .env: npm i dotenv
+
+7. Instalar nodemon para que se ejecute el código cada que haya un cambio: npm i nodemon -D
+
+8. Instalar las dependencias necesarias para aplicar la configuracion de eslint y prettier:
+   npm i eslint eslint-config-prettier eslint-plugin-prettier prettier -D
+
+9. Instalar husky hooks para que nuestro código haga el formateo automático cada que se
+   haga commit y se suba al repositorio: npx mrm@2 lint-staged y modificar el package.json
+
+/*Express y Router*/
+
+10. Crear la carpeta: config
+
+11. Crear el archivo: config/index.js
+
+12. Crear el archivo: index.js
+
+13. Crear la carpeta: utils
+
+14. Crear la carpeta: utils/mocks
+
+15. Crear el archivo: utils/mocks/movies.js
+
+13. Crear la carpeta: routes
+
+14. Crear el archivo: movies.js
+
+15. Crear el archivo: .gitignore, agregar la info desde la página gitignore.io
+
+16. Subimos nuestro avance del proyecto a un repositorio:
+    git inti
+    git remote add origin https://github.com/Manuelowsky/moviesAPI
+    git status 
+    git add .
+    git commit -m "Se agregaron las rutas y archivos de configuracion"
+    git push origin master
+
+/*Implementando Clean Architecture*/
+
+17. Crear la carpeta: services
+
+18. Crear el archivo que contiene la lógica del programa: services/movies.js
+
+/*Conección a servicios y librerias externas (Para este caso MongoDB)*/
+
+19. Ingresar a MongoDB logearnos y crear un nuevo Cluster
+
+20. Restringir las conexiones de IP: Network Access/Add IP/Allow Access Anyware
+
+21. Crear un usuario: Database Access/New User
+
+22. Crear la BD: Cluster/Collections/DB Name: dbmoviesAPI, Collection Name: movies
+
+23. Instalar el paquete: npm i mongodb
+
+24. Crear los archivos: .env (Tiene las variables de entorno y van a ser alimentadas por el archivo de configuración)
+
+25. Crear los archivos: .env.example (Para que cualquier otro desarrollador sepa que variables de entorno debe alimentar localmente)
+
+26. Crear la carpeta: lib
+
+27. Crear el archivo: mongo.js
+
+28. Crear la carpeta: utils/middleware
+
+29. Crear el archivo: utils/middleware/errorHandlers.js
+
+30. Crear el archivo: utils/middleware/validationHandler.js
+
+31. Instalar la dependencia boom que nos ayuda a imprimir errores comunes en peticiones HTTP de forma sencilla: npm i @hapi/boom
+
+32. Crear el archivo: utils/middleware/notFoundHandler.js
+
+32. Instalar la dependencia joi que sirve para validar que los datos que recibimos vengan en el formato adecuado (schema): npm i @hapi/joi
+
+32. Crear la carpeta: utils/schemas
+
+33. Crear el archivo: utils/schemas/movies.js

@@ -1,0 +1,26 @@
+/*
+    EsLint es sencillamente una herramienta de linting para JavaScript y JSX cuya función es la 
+    de revisar nuestro código tratando de encontrar errores que podrían provocar problemas de 
+    compilación o bien futuros bugs en nuestro desarrollo.
+*/
+{
+    "parserOptions": {
+        //Indicando la versión de ECMAScript
+      "ecmaVersion": 2018
+    },
+    //Indicando que extienda la versión recomendada y que utilice prettier
+    "extends": [
+      "eslint:recommended",
+      "prettier"
+    ],
+    //Configura las variables de entorno indicando que se usarán es6, node, mocha
+    "env": {
+      "es6": true,
+      "node": true,
+      "mocha": true
+    },
+    //Regla de no poner la consola en error, sino en  un warning
+    "rules": {
+      "no-console": "warn"
+    }
+  }
