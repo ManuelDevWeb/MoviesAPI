@@ -146,4 +146,12 @@
 
 55. Crear el archivo: vercel.json
 
+56. Subir los cambios al repo de github
 
+57. Entrar a vercel y crear una nueva app, colocamos el link de nuestro repo de github
+
+58. Antes de darle deploy AGREGAR VARIABLES DE ENTORNO (Las mismas que tenemos en env):
+    DB_NAME Encrypted
+    DB_HOST Encrypted
+    DB_PASSWORD Encrypted
+    DB_USER Encrypted
