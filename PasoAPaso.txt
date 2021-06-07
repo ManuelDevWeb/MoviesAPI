@@ -42,7 +42,7 @@
 
 16. Subimos nuestro avance del proyecto a un repositorio:
     git inti
-    git remote add origin https://github.com/Manuelowsky/moviesAPI
+    git remote add origin https://github.com/Manuelowsky/MoviesAPI
     git status 
     git add .
     git commit -m "Se agregaron las rutas y archivos de configuracion"
@@ -80,6 +80,8 @@
 
 30. Crear el archivo: utils/middleware/validationHandler.js
 
+/*Validaciones*/
+
 31. Instalar la dependencia boom que nos ayuda a imprimir errores comunes en peticiones HTTP de forma sencilla: npm i @hapi/boom
 
 32. Crear el archivo: utils/middleware/notFoundHandler.js
@@ -89,3 +91,59 @@
 32. Crear la carpeta: utils/schemas
 
 33. Crear el archivo: utils/schemas/movies.js
+
+/*Test*/
+
+34. Instalar la dependencia: npm i -D mocha supertest sinon proxyquire
+
+35. Crear el archivo: utils/testServer.js
+
+36. Crear la carpeta: test
+
+37. Crear el archivo: test/routes.movies.test.js
+
+38. Agregar el script para test en package.json
+
+39. Crear el archivo: utils/mocks/mongoLib.js
+
+40. Crear el archivo: test/services.movies.test.js
+
+41. Crear el archivo: utils/buildMessage.js
+
+42. Crear el archivo: test/utils.buildMessage.test.js
+
+/*Coverage: Permite identificar donde estamos fallando y como corregir nuestros tests*/
+
+43. Instalar la dependencia: npm i -D nyc
+
+44. Agregar el script cover y report en el package.json
+
+45. Configurar el coverage en el package.json
+
+46. Con el comando npm run cover y npm run report, podemos ver el reporte de como estan nuestros tests
+
+/*Capa Manejo de Cache*/
+
+47. Crear el archivo: utils/time.js
+
+48. Crear el archivo: utils/cacheResponse.js
+
+/*Contener aplicación en Docker*/
+
+49. Instalar Docker
+
+50. Crear el archivo: Dockerfile 
+
+51. Con el siguiente script creamos una imagen con nuestro de nuestro aplicativo: docker build -t project-movies-api .
+
+52. Con el siguiente script podemos ejecutar nuestra imagen en modo detach: docker run -d project-movies-api
+
+53. Si nos dirigimos a http://localhost:3000 deberíamos ver nuestra API funcionando.
+
+/*Despliegue en Vercel*/
+
+54. Instalar la dependencia vercel: npm i -g vercel
+
+55. Crear el archivo: vercel.json
+
+

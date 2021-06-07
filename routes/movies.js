@@ -10,6 +10,11 @@ const { movieIdSchema, createMovieSchema, updateMovieSchema } = require('../util
 //Importando validation
 const validationHandler = require('../utils/middleware/validationHandler');
 
+//Importando cache
+const cacheResponse = require('../utils/cacheResponse');
+//Importando el tiempo
+const { FIVE_MINUTES_IN_SECONDS, SIXTY_MINUTES_IN_SECONDS } = require('../utils/time');
+
 //Funcion que recibe una aplicación de express
 function moviesApi(app) {
     const router = express.Router();
@@ -22,6 +27,9 @@ function moviesApi(app) {
 
     //Ruta home para obtener por metodo get toda la información de las películas
     router.get("/", async(req, res, next) => {
+        //Agregando cache (5min puesto se agregan peliculas con frecuencia)
+        cacheResponse(res, FIVE_MINUTES_IN_SECONDS);
+
         //Datos que ingresamos desde el query
         const { tags } = req.query;
 
@@ -31,7 +39,7 @@ function moviesApi(app) {
 
             res.status(200).json({
                 data: movies,
-                message: 'Movies listed!'
+                message: 'movies listed'
             })
         } catch (err) {
             //Manejo de error con express
@@ -42,14 +50,16 @@ function moviesApi(app) {
     //El middleware lo colocamos entre la ruta y la definicion de la ruta
     //Metodo get que obtiene la pelicula de acuerdo al id que enviemos
     router.get("/:movieId", validationHandler({ movieId: movieIdSchema }, 'params'), async(req, res, next) => {
+        //Agregando cache (5min puesto se agregan peliculas con frecuencia)
+        cacheResponse(res, SIXTY_MINUTES_IN_SECONDS);
         //Datos que ingresamos desde la url (Igual nombre que en la url)
         const { movieId } = req.params;
         try {
-            const movies = await moviesService.getMovie({ movieId });
+            const movie = await moviesService.getMovie({ movieId });
 
             res.status(200).json({
-                data: movies,
-                message: 'Movie retrieved!'
+                data: movie,
+                message: 'movie retrieved'
             })
         } catch (err) {
             //Manejo de error con express
@@ -67,7 +77,7 @@ function moviesApi(app) {
             const createMovieId = await moviesService.createMovie({ movie });
             res.status(201).json({
                 data: createMovieId,
-                message: 'Movie created!!'
+                message: 'movie created'
             })
         } catch (err) {
             //Manejo de error con express
@@ -88,7 +98,7 @@ function moviesApi(app) {
 
             res.status(200).json({
                 data: updatedMovieId,
-                message: 'Movie updated!!'
+                message: 'movie updated'
             })
         } catch (err) {
             //Manejo de error con express
@@ -108,7 +118,7 @@ function moviesApi(app) {
 
             res.status(200).json({
                 data: updatedPartialMovieId,
-                message: 'Movie updated Partially!!'
+                message: 'Movie updated partially'
             })
         } catch (err) {
             //Manejo de error con express
@@ -126,7 +136,7 @@ function moviesApi(app) {
 
             res.status(200).json({
                 data: deletedMovie,
-                message: 'Movie deleted!!'
+                message: 'movie deleted'
             })
         } catch (err) {
             //Manejo de error con express

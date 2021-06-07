@@ -19,11 +19,11 @@ const moviesMock = [{
         ]
     },
     {
-        id: '3f951b6d-03fa-4fb0-a7a1-188c0abe9e06',
+        id: '5f240efcf373ccfcf8ec4750',
         title: "King Solomon's Mines",
         year: 2019,
         cover: 'http://dummyimage.com/800x600.png/dddddd/000000',
-        description: 'Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.\n\nPraesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.\n\nMorbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.',
+        description: 'Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.\n\nPraesent blandit,tristique in, tempus sit amet, sem.',
         duration: 77,
         contentRating: 'NC-17',
         source: 'https://multiply.com/dui/proin/leo/odio/porttitor/id/consequat.jsp',
@@ -141,7 +141,42 @@ const moviesMock = [{
     }
 ];
 
+//Utilidad que permite crear las peliculas filtradas
+function filteredMoviesMocks(tags) {
+    return moviesMock.filter(movie => movie.tags.includes(tags));
+}
+
+function finOneMovieMock(id) {
+    return moviesMock.find((movie) => movie.id === id);
+}
+
+//Servicio que permiten testear las rutas
+class MoviesServiceMock {
+    async getMovies() {
+        return Promise.resolve(moviesMock);
+    }
+
+    async createMovie() {
+        return await Promise.resolve(moviesMock[1].id);
+    }
+
+    async getMovie({ movieId }) {
+        return await Promise.resolve(finOneMovieMock(movieId));
+    }
+
+    async updateMovie() {
+        return await Promise.resolve(moviesMock[1])
+    }
+
+    async deleteMovie() {
+        return await Promise.resolve(moviesMock[1])
+    }
+}
+
 //Exportanto datos
 module.exports = {
-    moviesMock
+    moviesMock,
+    filteredMoviesMocks,
+    MoviesServiceMock,
+    finOneMovieMock
 };
