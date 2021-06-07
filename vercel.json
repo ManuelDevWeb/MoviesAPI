@@ -14,11 +14,5 @@
             "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
             "Access-Control-Allow-Credentials": "true"
         }
-    }],
-    "env": {
-        "DB_USER": "@movies-db-user",
-        "DB_PASS": "@movies-db-pass",
-        "DB_HOST": "@movies-db-host",
-        "DB_NAME": "@movies-db-name"
-    }
+    }]
 }
